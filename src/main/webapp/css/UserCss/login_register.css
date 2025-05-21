@@ -1,0 +1,159 @@
+@charset "UTF-8";
+
+/* RESET & BASE */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f5f6f8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+/* LEFT PANEL */
+.left-panel {
+  width: 40%;
+  background-color: #173a71;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  text-align: center;
+}
+
+.left-panel h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.left-panel h3 {
+  font-size: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+.logo {
+  width: 250px;
+  height: auto;
+}
+
+/* RIGHT PANEL */
+.right-panel {
+  width: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* REGISTER BOX */
+.register-box {
+  background-color: white;
+  padding: 2rem 3rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 500px;
+  margin-top: 2rem;
+}
+
+.register-box h2 {
+  margin-bottom: 0.1rem;
+  color: #173a71;
+  font-size: 1.5rem;
+}
+
+/* LOGIN BOX */
+.login-box {
+  background-color: white;
+  padding: 2rem 3rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+}
+
+.login-box h2 {
+  margin-bottom: 0.5rem;
+  color: #173a71;
+  font-size: 1.5rem;
+}
+
+/* FORM ELEMENTS */
+.form-row {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.form-row .form-group {
+  flex: 1;
+}
+
+.form-group,
+input,
+select.form-group {
+  padding: 0.7rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  width: 100%;
+  margin: 0.5rem 0;
+  background-color: white;
+  appearance: none;
+}
+
+/* BUTTON */
+button {
+  width: 100%;
+  padding: 0.7rem;
+  background-color: #173a71;
+  color: white;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 0.5rem;
+}
+
+button:hover {
+  background-color: #0f2d59;
+}
+
+
+
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .left-panel {
+    display: none;
+  }
+
+  .container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .right-panel {
+    width: 100%;
+  }
+
+  .register_box,
+  .login-box {
+    width: 90%;
+    max-width: 500px;
+  }
+}

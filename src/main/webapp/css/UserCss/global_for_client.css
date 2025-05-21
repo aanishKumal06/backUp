@@ -1,0 +1,348 @@
+@charset "UTF-8";
+
+* {
+   margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  body {
+    background-color: #f5f7fa;
+    color: #333;
+    line-height: 1.6;
+  }
+  
+  .container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  /* Header Styles */
+  header {
+    background-color: #1a3c5a;
+    color: white;
+    padding: 1rem 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .logo-container {
+    display: flex;
+    align-items: center;  
+    gap: 15px; 
+  }
+  
+  .logo {
+    display: flex;
+    align-items: center;  /* Ensures vertical centering for nested elements */
+  }
+
+
+  .logo img {
+    height: 50px; /* Adjust size as needed */
+    width: auto;
+    display: block; /* Removes extra spacing below image */
+    border-radius: 50%;
+  }
+
+  .logo-text {
+    margin: 0;
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-decoration: none;
+    color: white;
+  }
+  
+  /* Navigation Styles */
+  nav ul {
+    display: flex;
+    list-style: none;
+    align-items: center;
+  }
+  
+  nav ul li {
+    margin-left: 1.5rem;
+  }
+  
+  nav ul li a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s;
+    font-weight: 500;
+  }
+  
+  nav ul li a:hover {
+    color: #b8d8ff;
+  }
+  
+  .nav-link.active {
+    border-bottom: 2px solid #b8d8ff;
+  }
+  
+  /* Notification and Profile Icons */
+  .notification-icon,
+  .profile-icon {
+    position: relative;
+    cursor: pointer;
+  }
+  
+  .notification-container,
+  .profile-container {
+    position: relative;
+    padding: 5px;
+  }
+  
+  .icon {
+    font-size: 1.4rem;
+  }
+  
+  .notification-count {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: #f44336;
+    color: #f44336;
+    border-radius: 50%;
+    padding: 2px 5px;
+    font-size: 0.7rem;
+    font-weight: bold;
+  }
+  
+  /* Dropdown menus */
+  .notification-dropdown,
+  .profile-dropdown {
+    position: absolute;
+    right: 0;
+    top: 100%;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    width: 300px;
+    z-index: 100;
+    display: none;
+    overflow: hidden;
+  }
+  
+  .notification-container:hover .notification-dropdown,
+  .profile-container:hover .profile-dropdown {
+    display: block;
+  }
+  
+  .notification-item {
+    padding: 12px 15px;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .notification-item:last-child {
+    border-bottom: none;
+  }
+  
+  .notification-item h4 {
+    margin-bottom: 5px;
+    color: #1a3c5a;
+  }
+  
+  .notification-item small {
+    color: #888;
+    font-size: 0.8rem;
+  }
+  
+  /* Profile dropdown */
+  .profile-header {
+    background-color: #f5f7fa;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 1px solid #eee;
+    color: black;
+  }
+
+ 
+  
+  .mini-profile-pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+.profile-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.profile-menu li {
+  margin: 0;
+}
+
+.profile-menu li a,
+.profile-menu li button {
+  all: unset; /* removes all default styling */
+  display: block;
+  width: 80%;
+  padding: 10px 15px;
+  color: #333;
+  border-bottom: 1px solid #eee;
+  transition: background-color 0.2s;
+  cursor: pointer;
+  text-align: left;
+  text-decoration: none;
+  font: inherit;
+}
+
+.profile-menu li a:hover,
+.profile-menu li button:hover {
+  background-color: #f5f7fa;
+  color: #1a3c5a;
+}
+
+.profile-menu li:last-child a,
+.profile-menu li:last-child button {
+  border-bottom: none;
+}
+
+  
+  footer {
+    background-color: #1a3c5a;
+    color: white;
+    padding: 2rem 0;
+    margin-top: 3rem;
+  }
+  
+  .footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .footer-links ul {
+    display: flex;
+    list-style: none;
+  }
+  
+  .footer-links ul li {
+    margin-right: 1.5rem;
+  }
+  
+  .footer-links ul li a {
+    color: #b8d8ff;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  
+  .footer-links ul li a:hover {
+    color: white;
+  }
+  
+  .copyright {
+    text-align: center;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  
+  
+  @media (max-width: 768px) {
+    .header-content {
+      flex-direction: column;
+    }
+  
+    nav ul {
+      margin-top: 1rem;
+      width: 100%;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+  
+    nav ul li {
+      margin-left: 0.75rem;
+      margin-right: 0.75rem;
+      margin-bottom: 0.5rem;
+    }
+  
+    .dashboard-container {
+      grid-template-columns: 1fr;
+    }
+  
+    .form-row {
+      flex-direction: column;
+      gap: 0;
+    }
+  
+    .footer-content {
+      flex-direction: column;
+      text-align: center;
+    }
+  
+    .footer-links ul {
+      justify-content: center;
+      margin-top: 1rem;
+      flex-wrap: wrap;
+    }
+  
+    .card-container {
+      grid-template-columns: 1fr;
+    }
+  
+  
+  
+    .notification-dropdown,
+    .profile-dropdown {
+      width: 280px;
+      right: -100px;
+    }
+  }
+  @media (min-width: 1366px) {
+    /* Styles for big screens like 15.6 inch laptops and larger */
+    body {
+      font-size: 1.1rem;
+    }
+  
+    .container {
+      max-width: 1400px;
+    }
+  
+    .card-container {
+      grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    }
+  
+    /* Add other styles you want for large screens here */
+  }
+  
+
+
+  
+
+  
+  @media (min-width: 1366px) {
+    .room-list {
+      grid-template-columns: repeat(3, 1fr); 
+    }
+  
+    .room-card {
+      height: 500px; 
+      font-size: 1.1rem;
+    }
+  
+    .room-image {
+      height: 200px;
+      object-fit: cover;
+      width: 100%;
+    }
+  
+    .room-details {
+      padding: 15px;
+    }
+  }
+  
