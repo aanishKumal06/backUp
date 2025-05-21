@@ -3,10 +3,13 @@ package com.marshmallowhaven.Model;
 public class UserQueries {
 	
 	public static final String USER_LOGIN = "SELECT * FROM users WHERE username = ? AND password = ?";
+	
 	public static final String USER_DETAILS_ID = "SELECT * FROM users WHERE user_id = ?";
 
 	public static final String REGISTER_CLIENT = "INSERT INTO users (full_name, email, username, password, gender) VALUES (?, ?, ?, ?, ?)";
+	
 	public static final String TOP_THREE_EXPENSIVE_VACANT_ROOMS = "SELECT * FROM rooms WHERE is_available = 1 ORDER BY monthly_fee DESC LIMIT 3";
+	
 	public static final String GET_ROOMS_BY_TYPE_AND_PRICE_ORDER = 
 		    "SELECT * " +
 		    "FROM rooms " +
@@ -135,6 +138,28 @@ public class UserQueries {
 			    "UPDATE users SET " +
 			    "password = ? " +
 			    "WHERE user_id = ?";
+
+	 
+	 public static final String INSERT_INTO_WISHLIST =
+			    "INSERT INTO wishlist (user_id, room_id) " +
+			    "VALUES (?, ?)";
+
+	 public static final String GET_VACANT_ROOM_DETAILS_FROM_WISHLIST_BY_USER_ID =
+			    "SELECT r.room_id, r.room_number, r.room_type, r.room_description, r.room_facilities, " +
+			    "r.capacity, r.current_occupancy, r.monthly_fee, r.is_available, r.image_url, " +
+			    "r.floor, r.room_status " +
+			    "FROM wishlist w " +
+			    "JOIN rooms r ON w.room_id = r.room_id " +
+			    "WHERE w.user_id = ? AND r.room_status = 'vacant'";
+	 
+	 
+	    public static final String DELETE_FROM_WISHLIST_BY_ROOM_ID =
+	            "DELETE FROM wishlist WHERE room_id = ? AND user_id = ?";
+	    
+	    public static final String CHECK_WISHLIST =
+	    	    "SELECT EXISTS (SELECT 1 FROM wishlist " +
+	    	    "WHERE user_id = ? AND room_id = ?) AS is_in_wishlist";
+
 
 
 }

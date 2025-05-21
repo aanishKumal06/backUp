@@ -12,59 +12,54 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.marshmallowhaven.DAO.RoomDetailsDAO;
-import com.marshmallowhaven.DAO.WishlistEligibilityDAO;
 import com.marshmallowhaven.Model.Room;
 import com.marshmallowhaven.Model.User;
 
 /**
- * Servlet implementation class RoomDetailsByIdServlet
+ * Servlet implementation class WishlistDetailsServlet
  */
-@WebServlet("/RoomDetailsByIdServlet")
-public class RoomDetailsByIdServlet extends HttpServlet {
+@WebServlet("/WishlistDetailsServlet")
+public class WishlistDetailsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+       
+   
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String roomID = request.getParameter("roomId");
-        System.out.println(roomID);
-        int roomIdInt = Integer.parseInt(roomID);
-      
-        RoomDetailsDAO dao;
-        WishlistEligibilityDAO wish;
-        
-        HttpSession session = request.getSession(false);
+		RoomDetailsDAO dao;
+
+		HttpSession session = request.getSession(false);
         User user = (User) session.getAttribute("currentUser");
 
         if (user == null) {
         	request.getRequestDispatcher("/Pages/login.jsp").forward(request, response);
             return;
         }
-
+        
         int userId = user.getUserId();
-
         
 		try {
 			dao = new RoomDetailsDAO();
-			wish = new WishlistEligibilityDAO();
 			 ArrayList<Room> rooms;
 
-		            rooms = dao.getARoomDetailById(roomIdInt);
-		           
+		            rooms = dao.getVacantWishlistRoomsByUserId(userId);
 		            
+		            
+		           
 		        String displayPath = request.getContextPath() + "/photos/" ;
 		        request.setAttribute("imgURL",displayPath); // You must store this in Room object
-		        
-		        boolean inWishlist = wish.isInWishlist(userId, roomIdInt);
-		        System.out.println("inWishlist: " + inWishlist);
 
 		        request.setAttribute("rooms", rooms);
-		        request.setAttribute("inWishlist", inWishlist);
 
-		        request.getRequestDispatcher("/Pages/UserPages/room-details.jsp").forward(request, response);
+
+		        request.getRequestDispatcher("/Pages/UserPages/wishlist.jsp").forward(request, response);
 		} catch (ClassNotFoundException | SQLException e) {
-
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-}
+		
+		
+		
+	}
+
 	
 
 }

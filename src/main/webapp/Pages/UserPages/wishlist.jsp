@@ -38,7 +38,7 @@
 
     .room-detail-image img {
       width: 100%;
-      max-width: 450px;
+      max-width: 300px;
       height: auto;
       border-radius: 12px;
       object-fit: cover;
@@ -185,15 +185,14 @@
 </head>
 <body>
   <!-- Header -->
-  <c:set var="activePage" value="rooms" scope="request" />
+  <c:set var="activePage" value="wishlists" scope="request" />
 <jsp:include page="/Pages/UserPages/Components/navbar.jsp"/>
 
 
 	  
-	<c:if test="${not empty param.roomId}">
-	    <input type="hidden" name="roomId" value="${param.roomId}" />
-	</c:if>
-	
+
+	<c:choose>
+ 		 <c:when test="${not empty rooms}">
      
 		 <c:forEach var="room" items="${rooms}">
 		  <div class="main-content">
@@ -206,7 +205,7 @@
 		        <div class="room-specs">
                    <p><strong>Room No:</strong> ${room.roomNumber}</p>
                  </div>
-                 <div class="room-specs">
+                   <div class="room-specs">
 				  <p><strong>Floor:</strong> ${room.floor}</p>
 		        </div>
                 <div class="room-specs">
@@ -215,7 +214,6 @@
 				  <div class="room-specs">
 				  <p><strong>Price:</strong> $${room.monthlyFee}/month</p>
 		        </div>
-		        
 		        <div class="room-description">
 		          <strong>Description :</strong>${room.roomDescription}
 		        </div>
@@ -231,17 +229,10 @@
 			    <button type="submit" class="btn">Apply Now</button>
 			  </form>
 			
-				<c:choose>
-				  <c:when test="${!inWishlist}">
-				    <form class="form-actions" action="${pageContext.request.contextPath}/UploadWishListServlet" method="post" style="display: inline-block; margin: 0; padding: 0;">
-				      <input type="hidden" name="roomId" value="${room.roomId}">
-				      <button type="submit" class="btn">Add Wishlist</button>
-				    </form>
-				  </c:when>
-				  <c:otherwise>
-				   <button type="button" class="btn" disabled>Already in your wishlist</button>
-				  </c:otherwise>
-				</c:choose>
+			  <form class="form-actions" action="${pageContext.request.contextPath}/DeleteWishServlet" method="post" style="display: inline-block; margin: 0; padding: 0;">
+			    <input type="hidden" name="roomId" value="${room.roomId}">
+			    <button type="submit" class="btn">Remove </button>
+			  </form>
 			  
 			</div>
 
@@ -250,7 +241,13 @@
 		    </div>
 		  </div>
 		</c:forEach>
-
+		
+	</c:when>
+	  
+	  <c:otherwise>
+	    <p>There is no room in wishlist.</p>
+	  </c:otherwise>
+	</c:choose>
 
 <c:if test="${not empty message}">
 			
@@ -268,7 +265,7 @@
 			      var closeBtn = document.getElementById('closeModalButton');
 			      if (closeBtn) {
 			        closeBtn.onclick = function () {
-			          window.location.href = contextPath + '/Pages/UserPages/rooms.jsp';
+			        	window.location.href = contextPath + '/WishlistDetailsServlet';
 			        };
 			      }
 			    };

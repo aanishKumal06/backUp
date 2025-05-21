@@ -215,5 +215,40 @@ public class RoomDetailsDAO {
 		return rooms;
 
 	}
+	
+	public ArrayList<Room> getVacantWishlistRoomsByUserId(int userId) {
+	    ArrayList<Room> rooms = new ArrayList<>();
+
+	    if (conn != null) {
+	        try {
+	            ps = conn.prepareStatement(UserQueries.GET_VACANT_ROOM_DETAILS_FROM_WISHLIST_BY_USER_ID);
+	            ps.setInt(1, userId);
+	            ResultSet rs = ps.executeQuery();
+
+	            while (rs.next()) {
+	                Room room = new Room(
+	                    rs.getInt("room_id"),
+	                    rs.getString("room_number"),
+	                    rs.getString("room_type"),
+	                    rs.getString("room_description"),
+	                    rs.getString("room_facilities"),
+	                    rs.getInt("capacity"),
+	                    rs.getInt("current_occupancy"),
+	                    rs.getInt("monthly_fee"),
+	                    rs.getBoolean("is_available"),
+	                    rs.getString("image_url"),
+	                    rs.getString("floor"),
+	                    rs.getString("room_status")
+	                );
+	                rooms.add(room);
+	            }
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        }
+	    }
+
+	    return rooms;
+	}
+
 
 }

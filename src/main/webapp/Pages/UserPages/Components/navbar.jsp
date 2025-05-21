@@ -27,8 +27,9 @@
          <li><a href="${pageContext.request.contextPath}/Pages/UserPages/home.jsp" class="nav-link ${activePage == 'home' ? 'active' : ''}">Home</a></li>
 		<li><a href="${pageContext.request.contextPath}/Pages/UserPages/rooms.jsp" class="nav-link ${activePage == 'rooms' ? 'active' : ''}">Rooms</a></li>
 		<li><a href="${pageContext.request.contextPath}/Pages/UserPages/hostel-rules.jsp" class="nav-link ${activePage == 'rules' ? 'active' : ''}">Rules</a></li>
+		
 		<li><a href="#" class="nav-link ${activePage == 'about' ? 'active' : ''}">About us</a></li>
-	
+		<li><a href="${pageContext.request.contextPath}/WishlistDetailsServlet" class="nav-link ${activePage == 'wishlist' ? 'active' : ''}">Wishlist</a></li>
 
           
           <li class="profile-icon">

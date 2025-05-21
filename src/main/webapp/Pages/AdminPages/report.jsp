@@ -95,7 +95,7 @@
         </div>
           <div class="stat-info">
             <h3>Single Non-AC</h3>
-            <p class="stat-number">${maintenance}</p>
+            <p class="stat-number">${security}</p>
           </div>
         </div>
         <div class="stat-card">
@@ -105,7 +105,7 @@
 
           <div class="stat-info">
             <h3>Double Ac</h3>
-            <p class="stat-number">${security}</p>
+            <p class="stat-number">${maintenance}</p>
           </div>
         </div>
         <div class="stat-card">
@@ -113,7 +113,7 @@
 				<i class="fas fa-puzzle-piece"></i>
           </div>
           <div class="stat-info">
-            <h3>Doubke Non-AC</h3>
+            <h3>Double Non-AC</h3>
             <p class="stat-number">${others}</p>
           </div>
         </div>
